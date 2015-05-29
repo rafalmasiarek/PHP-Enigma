@@ -95,7 +95,8 @@ This Enigma machine was used by the Nazis in occupied Norway and post-war by the
 
 # How it Works?
 
-Information used to create this package come from [http://en.wikipedia.org/wiki/Enigma_machine](http://en.wikipedia.org/wiki/Enigma_machine) and the manual from "Enigma Simulator" by D. Rijmenants [http://users.telenet.be/d.rijmenants/](http://users.telenet.be/d.rijmenants/) I tested proper encryption against "Enigma Simulator" by D. Rijmenants [http://www.xat.nl/enigma](http://www.xat.nl/enigma)
+Information used to create this package come from [http://en.wikipedia.org/wiki/Enigma_machine](http://en.wikipedia.org/wiki/Enigma_machine) and the manual from "Enigma Simulator" by D. Rijmenants [http://users.telenet.be/d.rijmenants/](http://users.telenet.be/d.rijmenants/) I tested proper encryption against "Enigma Simulator" by D. Rijmenants [http://www.xat.nl/enigma](http://www.xat.nl/enigma).
+Website of project [http://mustachelab.pl/enigma](http://mustachelab.pl/enigma)
 
 This package provides the funtionality of 3 different Enigma models:
 
@@ -232,3 +233,6 @@ disconnect two letters on the plugboard the current position of a rotor can be o
     </pre>
 
 Enigma machines are now a collector's item for the über geek - a standard Army Enigma has increased in value from $20K to over $100K in the past decade. A record price of over $208,000 was achieved in a Christie's auction on 9/29/2011.
+
+Package by [Rafal Masiarek](http://rafal.masiarek.pl "Rafal Masiarek") from [Mustache Lab](http://mustachelab.pl "Mustache Lab")
+
