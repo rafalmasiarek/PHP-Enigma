@@ -709,16 +709,16 @@ define("ENIGMA_ALPHABET_SIZE", sizeof($ENIGMA_ALPHABET));
  * @global array $ENIGMA_ROTORS
  */
 $ENIGMA_ROTORS = array(
-	array("key"=>ENIGMA_ROTOR_I,     "wiring"=>"EKMFLGDQVZNTOWYHXUSPAIBRCJ", "used"=>array(ENIGMA_WM, ENIGMA_KM_M3, ENIGMA_KM_M4), "notches"=>array(ENIGMA_KEY_Q)),
-	array("key"=>ENIGMA_ROTOR_II,    "wiring"=>"AJDKSIRUXBLHWTMCQGZNPYFVOE", "used"=>array(ENIGMA_WM, ENIGMA_KM_M3, ENIGMA_KM_M4), "notches"=>array(ENIGMA_KEY_E)),
-	array("key"=>ENIGMA_ROTOR_III,   "wiring"=>"BDFHJLCPRTXVZNYEIWGAKMUSQO", "used"=>array(ENIGMA_WM, ENIGMA_KM_M3, ENIGMA_KM_M4), "notches"=>array(ENIGMA_KEY_V)),
-	array("key"=>ENIGMA_ROTOR_IV,    "wiring"=>"ESOVPZJAYQUIRHXLNFTGKDCMWB", "used"=>array(ENIGMA_WM, ENIGMA_KM_M3, ENIGMA_KM_M4), "notches"=>array(ENIGMA_KEY_J)),
-	array("key"=>ENIGMA_ROTOR_V,     "wiring"=>"VZBRGITYUPSDNHLXAWMJQOFECK", "used"=>array(ENIGMA_WM, ENIGMA_KM_M3, ENIGMA_KM_M4), "notches"=>array(ENIGMA_KEY_Z)),
-	array("key"=>ENIGMA_ROTOR_VI,    "wiring"=>"JPGVOUMFYQBENHZRDKASXLICTW", "used"=>array(ENIGMA_KM_M3, ENIGMA_KM_M4), "notches"=>array(ENIGMA_KEY_M, ENIGMA_KEY_Z)),
-	array("key"=>ENIGMA_ROTOR_VII,   "wiring"=>"NZJHGRCXMYSWBOUFAIVLPEKQDT", "used"=>array(ENIGMA_KM_M3, ENIGMA_KM_M4), "notches"=>array(ENIGMA_KEY_M, ENIGMA_KEY_Z)),
-	array("key"=>ENIGMA_ROTOR_VIII,  "wiring"=>"FKQHTLXOCBJSPDZRAMEWNIUYGV", "used"=>array(ENIGMA_KM_M3, ENIGMA_KM_M4), "notches"=>array(ENIGMA_KEY_M, ENIGMA_KEY_Z)),
-	array("key"=>ENIGMA_ROTOR_BETA,  "wiring"=>"LEYJVCNIXWPBQMDRTAKZGFUHOS", "used"=>array(ENIGMA_KM_M4), "notches"=>array()),
-	array("key"=>ENIGMA_ROTOR_GAMMA, "wiring"=>"FSOKANUERHMBTIYCWLQPZXVGJD", "used"=>array(ENIGMA_KM_M4), "notches"=>array())
+	array("key"=>ENIGMA_ROTOR_I,     "wiring"=>"EKMFLGDQVZNTOWYHXUSPAIBRCJ", "used"=>array(ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4), "notches"=>array(ENIGMA_KEY_Q)),
+	array("key"=>ENIGMA_ROTOR_II,    "wiring"=>"AJDKSIRUXBLHWTMCQGZNPYFVOE", "used"=>array(ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4), "notches"=>array(ENIGMA_KEY_E)),
+	array("key"=>ENIGMA_ROTOR_III,   "wiring"=>"BDFHJLCPRTXVZNYEIWGAKMUSQO", "used"=>array(ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4), "notches"=>array(ENIGMA_KEY_V)),
+	array("key"=>ENIGMA_ROTOR_IV,    "wiring"=>"ESOVPZJAYQUIRHXLNFTGKDCMWB", "used"=>array(ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4), "notches"=>array(ENIGMA_KEY_J)),
+	array("key"=>ENIGMA_ROTOR_V,     "wiring"=>"VZBRGITYUPSDNHLXAWMJQOFECK", "used"=>array(ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4), "notches"=>array(ENIGMA_KEY_Z)),
+	array("key"=>ENIGMA_ROTOR_VI,    "wiring"=>"JPGVOUMFYQBENHZRDKASXLICTW", "used"=>array(ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4), "notches"=>array(ENIGMA_KEY_M, ENIGMA_KEY_Z)),
+	array("key"=>ENIGMA_ROTOR_VII,   "wiring"=>"NZJHGRCXMYSWBOUFAIVLPEKQDT", "used"=>array(ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4), "notches"=>array(ENIGMA_KEY_M, ENIGMA_KEY_Z)),
+	array("key"=>ENIGMA_ROTOR_VIII,  "wiring"=>"FKQHTLXOCBJSPDZRAMEWNIUYGV", "used"=>array(ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4), "notches"=>array(ENIGMA_KEY_M, ENIGMA_KEY_Z)),
+	array("key"=>ENIGMA_ROTOR_BETA,  "wiring"=>"LEYJVCNIXWPBQMDRTAKZGFUHOS", "used"=>array(ENIGMA_MODEL_KMM4), "notches"=>array()),
+	array("key"=>ENIGMA_ROTOR_GAMMA, "wiring"=>"FSOKANUERHMBTIYCWLQPZXVGJD", "used"=>array(ENIGMA_MODEL_KMM4), "notches"=>array())
 );
 
 
@@ -731,10 +731,10 @@ $ENIGMA_ROTORS = array(
  * @global array $ENIGMA_REFLECTORS
  */
 $ENIGMA_REFLECTORS = array(
-	array("key"=>ENIGMA_REFLECTOR_B,     "wiring"=>"YRUHQSLDPXNGOKMIEBFZCWVJAT", "used"=>array(ENIGMA_WM, ENIGMA_KM_M3)),
-	array("key"=>ENIGMA_REFLECTOR_C,     "wiring"=>"FVPJIAOYEDRZXWGCTKUQSBNMHL", "used"=>array(ENIGMA_WM, ENIGMA_KM_M3)),
-	array("key"=>ENIGMA_REFLECTOR_BTHIN, "wiring"=>"ENKQAUYWJICOPBLMDXZVFTHRGS", "used"=>array(ENIGMA_KM_M4)),
-	array("key"=>ENIGMA_REFLECTOR_CTHIN, "wiring"=>"RDOBJNTKVEHMLFCWZAXGYIPSUQ", "used"=>array(ENIGMA_KM_M4))
+	array("key"=>ENIGMA_REFLECTOR_B,     "wiring"=>"YRUHQSLDPXNGOKMIEBFZCWVJAT", "used"=>array(ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3)),
+	array("key"=>ENIGMA_REFLECTOR_C,     "wiring"=>"FVPJIAOYEDRZXWGCTKUQSBNMHL", "used"=>array(ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3)),
+	array("key"=>ENIGMA_REFLECTOR_BTHIN, "wiring"=>"ENKQAUYWJICOPBLMDXZVFTHRGS", "used"=>array(ENIGMA_MODEL_KMM4)),
+	array("key"=>ENIGMA_REFLECTOR_CTHIN, "wiring"=>"RDOBJNTKVEHMLFCWZAXGYIPSUQ", "used"=>array(ENIGMA_MODEL_KMM4))
 );
 
 
@@ -807,7 +807,7 @@ class EnigmaWiring {
      * @uses enigma_l2p
      */
 	public function __construct($wiring) {
-		$this->wiring = array_map(enigma_l2p, str_split($wiring));
+		$this->wiring = array_map('enigma_l2p', str_split($wiring));
 	}
 
     /**
@@ -895,6 +895,7 @@ class EnigmaPlugboard {
      * @uses ENIGMA_ALPHABET_SIZE
      */
 	public function __construct() {
+		$wiring = '';
 		for($idx=0; $idx<ENIGMA_ALPHABET_SIZE;$idx++) $wiring.= enigma_p2l($idx);
 		$this->wiring = new EnigmaWiring($wiring);
 	}
@@ -1246,7 +1247,7 @@ class Enigma {
      */
 	public function mountRotor($position, $rotor) {
 		if($this->availablerotors[$rotor]->inUse) return;
-		if($this->rotors[$position]) $this->rotors[$position]->inUse = false;
+		if(isset($this->rotors[$position])) $this->rotors[$position]->inUse = false;
 		$this->rotors[$position] = $this->availablerotors[$rotor];
 		$this->rotors[$position]->inUse = true;
 	}
