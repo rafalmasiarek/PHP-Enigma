@@ -80,7 +80,7 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "Enigma.php";
 
 $rotors = array(ENIGMA_ROTOR_I, ENIGMA_ROTOR_II, ENIGMA_ROTOR_III);
 
-$enigma = new Enigma(ENIGMA_WM, $rotors, ENIGMA_REFLECTOR_B);
+$enigma = new Enigma(ENIGMA_MODEL_WMLW, $rotors, ENIGMA_REFLECTOR_B);
 
 $enigma->setPosition(ENIGMA_ROTOR_1, "M");
 
