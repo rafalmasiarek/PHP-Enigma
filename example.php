@@ -93,36 +93,36 @@ $enigma_history = (new CommonMarkConverter)->convert(file_get_contents(__DIR__.\
 
 /**
  * encoding table
- * eg.: ENIGMA_KEY_A=>"A", ENIGMA_KEY_B=>"B", ...
+ * eg.: Enigma::KEY_A=>"A", Enigma::KEY_B=>"B", ...
  * @global array $ENIGMA_ALPHABET
  */
 $ENIGMA_ALPHABET = [
-    ENIGMA_KEY_A=>'A',
-    ENIGMA_KEY_B=>'B',
-    ENIGMA_KEY_C=>'C',
-    ENIGMA_KEY_D=>'D',
-    ENIGMA_KEY_E=>'E',
-    ENIGMA_KEY_F=>'F',
-    ENIGMA_KEY_G=>'G',
-    ENIGMA_KEY_H=>'H',
-    ENIGMA_KEY_I=>'I',
-    ENIGMA_KEY_J=>'J',
-    ENIGMA_KEY_K=>'K',
-    ENIGMA_KEY_L=>'L',
-    ENIGMA_KEY_M=>'M',
-    ENIGMA_KEY_N=>'N',
-    ENIGMA_KEY_O=>'O',
-    ENIGMA_KEY_P=>'P',
-    ENIGMA_KEY_Q=>'Q',
-    ENIGMA_KEY_R=>'R',
-    ENIGMA_KEY_S=>'S',
-    ENIGMA_KEY_T=>'T',
-    ENIGMA_KEY_U=>'U',
-    ENIGMA_KEY_V=>'V',
-    ENIGMA_KEY_W=>'W',
-    ENIGMA_KEY_X=>'X',
-    ENIGMA_KEY_Y=>'Y',
-    ENIGMA_KEY_Z=>'Z',
+    Enigma::KEY_A=>'A',
+    Enigma::KEY_B=>'B',
+    Enigma::KEY_C=>'C',
+    Enigma::KEY_D=>'D',
+    Enigma::KEY_E=>'E',
+    Enigma::KEY_F=>'F',
+    Enigma::KEY_G=>'G',
+    Enigma::KEY_H=>'H',
+    Enigma::KEY_I=>'I',
+    Enigma::KEY_J=>'J',
+    Enigma::KEY_K=>'K',
+    Enigma::KEY_L=>'L',
+    Enigma::KEY_M=>'M',
+    Enigma::KEY_N=>'N',
+    Enigma::KEY_O=>'O',
+    Enigma::KEY_P=>'P',
+    Enigma::KEY_Q=>'Q',
+    Enigma::KEY_R=>'R',
+    Enigma::KEY_S=>'S',
+    Enigma::KEY_T=>'T',
+    Enigma::KEY_U=>'U',
+    Enigma::KEY_V=>'V',
+    Enigma::KEY_W=>'W',
+    Enigma::KEY_X=>'X',
+    Enigma::KEY_Y=>'Y',
+    Enigma::KEY_Z=>'Z',
 ];
 
 /**
@@ -141,16 +141,16 @@ $ENIGMA_ALPHABET = [
  * @global array $ENIGMA_ROTORS
  */
 $ENIGMA_ROTORS = [
-    ['key'=>ENIGMA_ROTOR_I,     'wiring'=>'EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'used'=>[ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4], 'notches'=>[ENIGMA_KEY_Q]],
-    ['key'=>ENIGMA_ROTOR_II,    'wiring'=>'AJDKSIRUXBLHWTMCQGZNPYFVOE', 'used'=>[ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4], 'notches'=>[ENIGMA_KEY_E]],
-    ['key'=>ENIGMA_ROTOR_III,   'wiring'=>'BDFHJLCPRTXVZNYEIWGAKMUSQO', 'used'=>[ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4], 'notches'=>[ENIGMA_KEY_V]],
-    ['key'=>ENIGMA_ROTOR_IV,    'wiring'=>'ESOVPZJAYQUIRHXLNFTGKDCMWB', 'used'=>[ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4], 'notches'=>[ENIGMA_KEY_J]],
-    ['key'=>ENIGMA_ROTOR_V,     'wiring'=>'VZBRGITYUPSDNHLXAWMJQOFECK', 'used'=>[ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4], 'notches'=>[ENIGMA_KEY_Z]],
-    ['key'=>ENIGMA_ROTOR_VI,    'wiring'=>'JPGVOUMFYQBENHZRDKASXLICTW', 'used'=>[ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4], 'notches'=>[ENIGMA_KEY_M, ENIGMA_KEY_Z]],
-    ['key'=>ENIGMA_ROTOR_VII,   'wiring'=>'NZJHGRCXMYSWBOUFAIVLPEKQDT', 'used'=>[ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4], 'notches'=>[ENIGMA_KEY_M, ENIGMA_KEY_Z]],
-    ['key'=>ENIGMA_ROTOR_VIII,  'wiring'=>'FKQHTLXOCBJSPDZRAMEWNIUYGV', 'used'=>[ENIGMA_MODEL_KMM3, ENIGMA_MODEL_KMM4], 'notches'=>[ENIGMA_KEY_M, ENIGMA_KEY_Z]],
-    ['key'=>ENIGMA_ROTOR_BETA,  'wiring'=>'LEYJVCNIXWPBQMDRTAKZGFUHOS', 'used'=>[ENIGMA_MODEL_KMM4], 'notches'=>[]],
-    ['key'=>ENIGMA_ROTOR_GAMMA, 'wiring'=>'FSOKANUERHMBTIYCWLQPZXVGJD', 'used'=>[ENIGMA_MODEL_KMM4], 'notches'=>[]],
+    ['key'=>RotorType::I,     'wiring'=>'EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3, EnigmaModel::KMM4], 'notches'=>[Enigma::KEY_Q]],
+    ['key'=>RotorType::II,    'wiring'=>'AJDKSIRUXBLHWTMCQGZNPYFVOE', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3, EnigmaModel::KMM4], 'notches'=>[Enigma::KEY_E]],
+    ['key'=>RotorType::III,   'wiring'=>'BDFHJLCPRTXVZNYEIWGAKMUSQO', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3, EnigmaModel::KMM4], 'notches'=>[Enigma::KEY_V]],
+    ['key'=>RotorType::IV,    'wiring'=>'ESOVPZJAYQUIRHXLNFTGKDCMWB', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3, EnigmaModel::KMM4], 'notches'=>[Enigma::KEY_J]],
+    ['key'=>RotorType::V,     'wiring'=>'VZBRGITYUPSDNHLXAWMJQOFECK', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3, EnigmaModel::KMM4], 'notches'=>[Enigma::KEY_Z]],
+    ['key'=>RotorType::VI,    'wiring'=>'JPGVOUMFYQBENHZRDKASXLICTW', 'used'=>[EnigmaModel::KMM3, EnigmaModel::KMM4], 'notches'=>[Enigma::KEY_M, Enigma::KEY_Z]],
+    ['key'=>RotorType::VII,   'wiring'=>'NZJHGRCXMYSWBOUFAIVLPEKQDT', 'used'=>[EnigmaModel::KMM3, EnigmaModel::KMM4], 'notches'=>[Enigma::KEY_M, Enigma::KEY_Z]],
+    ['key'=>RotorType::VIII,  'wiring'=>'FKQHTLXOCBJSPDZRAMEWNIUYGV', 'used'=>[EnigmaModel::KMM3, EnigmaModel::KMM4], 'notches'=>[Enigma::KEY_M, Enigma::KEY_Z]],
+    ['key'=>RotorType::BETA,  'wiring'=>'LEYJVCNIXWPBQMDRTAKZGFUHOS', 'used'=>[EnigmaModel::KMM4], 'notches'=>[]],
+    ['key'=>RotorType::GAMMA, 'wiring'=>'FSOKANUERHMBTIYCWLQPZXVGJD', 'used'=>[EnigmaModel::KMM4], 'notches'=>[]],
 ];
 
 
@@ -163,10 +163,10 @@ $ENIGMA_ROTORS = [
  * @global array $ENIGMA_REFLECTORS
  */
 $ENIGMA_REFLECTORS = [
-    ['key'=>ENIGMA_REFLECTOR_B,     'wiring'=>'YRUHQSLDPXNGOKMIEBFZCWVJAT', 'used'=>[ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3]],
-    ['key'=>ENIGMA_REFLECTOR_C,     'wiring'=>'FVPJIAOYEDRZXWGCTKUQSBNMHL', 'used'=>[ENIGMA_MODEL_WMLW, ENIGMA_MODEL_KMM3]],
-    ['key'=>ENIGMA_REFLECTOR_BTHIN, 'wiring'=>'ENKQAUYWJICOPBLMDXZVFTHRGS', 'used'=>[ENIGMA_MODEL_KMM4]],
-    ['key'=>ENIGMA_REFLECTOR_CTHIN, 'wiring'=>'RDOBJNTKVEHMLFCWZAXGYIPSUQ', 'used'=>[ENIGMA_MODEL_KMM4]],
+    ['key'=>ReflectorType::B,     'wiring'=>'YRUHQSLDPXNGOKMIEBFZCWVJAT', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3]],
+    ['key'=>ReflectorType::C,     'wiring'=>'FVPJIAOYEDRZXWGCTKUQSBNMHL', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3]],
+    ['key'=>ReflectorType::BTHIN, 'wiring'=>'ENKQAUYWJICOPBLMDXZVFTHRGS', 'used'=>[EnigmaModel::KMM4]],
+    ['key'=>ReflectorType::CTHIN, 'wiring'=>'RDOBJNTKVEHMLFCWZAXGYIPSUQ', 'used'=>[EnigmaModel::KMM4]],
 ];
 
 
@@ -181,10 +181,10 @@ function enigma_history()
 }
 
 
-$rotors = [ENIGMA_ROTOR_I, ENIGMA_ROTOR_II, ENIGMA_ROTOR_III];
-$enigma = new Enigma(ENIGMA_MODEL_WMLW, $rotors, ENIGMA_REFLECTOR_B);
-$enigma->setPosition(ENIGMA_ROTOR_1, 'M');
-$enigma->setRingstellung(ENIGMA_ROTOR_1, 'B');
+$rotors = [RotorType::I, RotorType::II, RotorType::III];
+$enigma = new Enigma(EnigmaModel::WMLW, $rotors, ReflectorType::B);
+$enigma->setPosition(RotorPosition::P1, 'M');
+$enigma->setRingstellung(RotorPosition::P1, 'B');
 
 $enigma->plugLetters('A', 'C');
 $enigma->plugLetters('B', 'Z');
@@ -192,9 +192,9 @@ $enigma->plugLetters('B', 'Z');
 $enigma->unplugLetters('A');
 
 $l = 'A';
-echo 'before: '.$enigma->getPosition(ENIGMA_ROTOR_3).' '.$enigma->getPosition(ENIGMA_ROTOR_2).' '.$enigma->getPosition(ENIGMA_ROTOR_1).'<br>';
+echo 'before: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1).'<br>';
 echo $l.'->'.$enigma->encodeLetter($l).'<br>';
-echo 'after: '.$enigma->getPosition(ENIGMA_ROTOR_3).' '.$enigma->getPosition(ENIGMA_ROTOR_2).' '.$enigma->getPosition(ENIGMA_ROTOR_1).'<br>';
+echo 'after: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1).'<br>';
 
 ?>
 

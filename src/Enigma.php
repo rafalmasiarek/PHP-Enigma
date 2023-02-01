@@ -13,7 +13,7 @@ namespace Rafalmasiarek\Enigma;
  * rotor 3(4)..1 and the plugboard again.
  * After each encoded letter, the advance mechanism changes the internal setup by rotating the rotors.
  */
-/**
+/**const
  * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
  * @version 1.0
  * @package Enigma
@@ -21,6 +21,36 @@ namespace Rafalmasiarek\Enigma;
  */
 class Enigma
 {
+    /**
+     * Keyboard codes
+     */
+    public const KEY_A = 0;
+    public const KEY_B = 1;
+    public const KEY_C = 2;
+    public const KEY_D = 3;
+    public const KEY_E = 4;
+    public const KEY_F = 5;
+    public const KEY_G = 6;
+    public const KEY_H = 7;
+    public const KEY_I = 8;
+    public const KEY_J = 9;
+    public const KEY_K = 10;
+    public const KEY_L = 11;
+    public const KEY_M = 12;
+    public const KEY_N = 13;
+    public const KEY_O = 14;
+    public const KEY_P = 15;
+    public const KEY_Q = 16;
+    public const KEY_R = 17;
+    public const KEY_S = 18;
+    public const KEY_T = 19;
+    public const KEY_U = 20;
+    public const KEY_V = 21;
+    public const KEY_W = 22;
+    public const KEY_X = 23;
+    public const KEY_Y = 24;
+    public const KEY_Z = 25;
+
     /**
      * converts a character into its pendant in the Enigma alphabet
      * @param string character to convert
@@ -74,7 +104,7 @@ class Enigma
      * The reflectors available for this model of the Enigma.
      * @var array EnigmaReflector
      */
-    private $availablereflectors;
+    private array $availablereflectors;
 
     /**
      * Constructor sets up the plugboard and creates the rotors and reflectros available for the given model.
@@ -88,7 +118,7 @@ class Enigma
      * @uses EnigmaRotor
      * @uses EnigmaReflector
      */
-    public function __construct($model, $rotors, $reflector)
+    public function __construct(EnigmaModel $model, array $rotors, ReflectorType $reflector)
     {
         global $ENIGMA_ROTORS, $ENIGMA_REFLECTORS;
 
@@ -100,12 +130,12 @@ class Enigma
 
         foreach ($ENIGMA_ROTORS as $r) {
             if (\in_array($model, $r['used'], true)) {
-                $this->availablerotors[$r['key']] = new EnigmaRotor($r['wiring'], $r['notches']);
+                $this->availablerotors[$r['key']->name] = new EnigmaRotor($r['wiring'], $r['notches']);
             }
         }
         foreach ($ENIGMA_REFLECTORS as $r) {
             if (\in_array($model, $r['used'], true)) {
-                $this->availablereflectors[$r['key']] = new EnigmaReflector($r['wiring']);
+                $this->availablereflectors[$r['key']->name] = new EnigmaReflector($r['wiring']);
             }
         }
 
@@ -166,15 +196,17 @@ class Enigma
      * @param integer ID of the rotor to use
      * @return void
      */
-    public function mountRotor($position, $rotor): void
+    public function mountRotor(int|RotorPosition $position, RotorType $rotor): void
     {
-        if ($this->availablerotors[$rotor]->inUse) {
+        $position = RotorPosition::getPositionIntValue($position);
+
+        if ($this->availablerotors[$rotor->name]->inUse) {
             return;
         }
         if (isset($this->rotors[$position])) {
             $this->rotors[$position]->inUse = false;
         }
-        $this->rotors[$position] = $this->availablerotors[$rotor];
+        $this->rotors[$position] = $this->availablerotors[$rotor->name];
         $this->rotors[$position]->inUse = true;
     }
 
@@ -184,9 +216,9 @@ class Enigma
      * @param integer ID of the reflector to use
      * @return void
      */
-    public function mountReflector($reflector): void
+    public function mountReflector(ReflectorType $reflector): void
     {
-        $this->reflector = $this->availablereflectors[$reflector];
+        $this->reflector = $this->availablereflectors[$reflector->name];
     }
 
     /**
@@ -196,9 +228,9 @@ class Enigma
      * @return void
      * @uses enigma_l2p
      */
-    public function setPosition($position, $letter): void
+    public function setPosition(RotorPosition $position, $letter): void
     {
-        $this->rotors[$position]->setPosition(self::enigma_l2p($letter));
+        $this->rotors[$position->value]->setPosition(self::enigma_l2p($letter));
     }
 
     /**
@@ -207,8 +239,10 @@ class Enigma
      * @return string current position
      * @uses enigma_p2l
      */
-    public function getPosition($position)
+    public function getPosition(int|RotorPosition $position)
     {
+        $position = RotorPosition::getPositionIntValue($position);
+
         return self::enigma_p2l($this->rotors[$position]->getPosition());
     }
 
@@ -219,8 +253,10 @@ class Enigma
      * @return void
      * @uses enigma_l2p
      */
-    public function setRingstellung($position, $letter): void
+    public function setRingstellung(int|RotorPosition $position, $letter): void
     {
+        $position = RotorPosition::getPositionIntValue($position);
+
         $this->rotors[$position]->setRingstellung(self::enigma_l2p($letter));
     }
 
