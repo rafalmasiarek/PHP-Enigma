@@ -204,33 +204,35 @@ disconnect two letters on the plugboard the current position of a rotor can be o
 
 # example:
 
-    <?php
-    /**
-     * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
-     * @author Mustache Lab <http://mustachelab.pl>
-     * @copyright Copyright (c) 2015, Rafal Masiarek
-     * @version 1.0
-     * @package Enigma
-     */
+```php
+<?php
+/**
+ * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
+ * @author Mustache Lab <http://mustachelab.pl>
+ * @copyright Copyright (c) 2015, Rafal Masiarek
+ * @version 1.0
+ * @package Enigma
+ */
 
-    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "Enigma.php";
-    $rotors = array(ENIGMA_ROTOR_I, ENIGMA_ROTOR_II, ENIGMA_ROTOR_III);
-    $enigma = new Enigma(ENIGMA_WM, $rotors, ENIGMA_REFLECTOR_B);
-    $enigma->setPosition(ENIGMA_ROTOR_1, "M");
-    $enigma->setRingstellung(ENIGMA_ROTOR_1, "B");
-    $enigma->plugLetters("A", "C");
-    $enigma->plugLetters("B", "Z");
-    $enigma->unplugLetters("A");
-    $l = "A";
-    echo "before: ".$enigma->getPosition(ENIGMA_ROTOR_3)." ".$enigma->getPosition(ENIGMA_ROTOR_2)." ".$enigma->getPositionENIGMA_ROTOR_1)."<br>";
-    echo $l."->".$enigma->encodeLetter($l)."<br>";
-    echo "after: ".$enigma->getPosition(ENIGMA_ROTOR_3)." ".$enigma->getPosition(ENIGMA_ROTOR_2)." ".$enigma->getPosition(ENIGMA_ROTOR_1)."<br>";
+use Rafalmasiarek\Enigma\{Enigma, EnigmaModel, ReflectorType, RotorPosition, RotorType};
 
-    ?>
+require_once 'vendor/autoload.php';
 
-    <pre>
-    <?php print_r($enigma); ?>
-    </pre>
+$rotors = [RotorType::I, RotorType::II, RotorType::III];
+$enigma = new Enigma(EnigmaModel::WMLW, $rotors, ReflectorType::B);
+$enigma->setPosition(RotorPosition::P1, 'M');
+$enigma->setRingstellung(RotorPosition::P1, 'B');
+
+$enigma->plugLetters('A', 'C');
+$enigma->plugLetters('B', 'Z');
+
+$enigma->unplugLetters('A');
+
+$l = 'A';
+echo 'before: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1)."\n";
+echo $l.'->'.$enigma->encodeLetter($l)."\n";
+echo 'after: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1)."\n";
+```
 
 Enigma machines are now a collector's item for the über geek - a standard Army Enigma has increased in value from $20K to over $100K in the past decade. A record price of over $208,000 was achieved in a Christie's auction on 9/29/2011.
 

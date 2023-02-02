@@ -19,7 +19,6 @@ namespace Rafalmasiarek\Enigma;
  */
 class EnigmaReflector
 {
-
     /**
      * stores the setup for all available reflectors
      * fields are

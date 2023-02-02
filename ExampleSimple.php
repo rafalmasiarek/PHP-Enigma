@@ -1,13 +1,4 @@
 <?php
-
-declare(strict_types=1);
-
-namespace Rafalmasiarek\Enigma;
-
-use League\CommonMark\CommonMarkConverter;
-
-require_once 'vendor/autoload.php';
-
 /**
  * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
  * @author  Mustache Lab <kontakt@mustachelab.pl>
@@ -15,8 +6,6 @@ require_once 'vendor/autoload.php';
  * @version 1.0
  * @package Enigma
  */
-
-
 /*
 
                                                                       `.:'+###++++++#++##+;:.`
@@ -87,21 +76,11 @@ require_once 'vendor/autoload.php';
                                                             ,'@#+++++++++++++++++++++++++++++++++++++##+:`
 */
 
+declare(strict_types=1);
 
+use Rafalmasiarek\Enigma\{Enigma, EnigmaModel, ReflectorType, RotorPosition, RotorType};
 
-
-/**
- * this function converts the Enigma cipher machine history to readable HTML output
- * @return HTML with Enigma history
- * @uses $enigma_history
- */
-function enigma_history()
-{
-    $enigma_history = (new CommonMarkConverter)->convert(file_get_contents(__DIR__.\DIRECTORY_SEPARATOR.'README.md'));
-
-    return '<html><meta charset="utf-8">' . $enigma_history . '</html>';
-}
-
+require_once 'vendor/autoload.php';
 
 $rotors = [RotorType::I, RotorType::II, RotorType::III];
 $enigma = new Enigma(EnigmaModel::WMLW, $rotors, ReflectorType::B);
@@ -114,14 +93,6 @@ $enigma->plugLetters('B', 'Z');
 $enigma->unplugLetters('A');
 
 $l = 'A';
-echo 'before: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1).'<br>';
-echo $l.'->'.$enigma->encodeLetter($l).'<br>';
-echo 'after: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1).'<br>';
-
-?>
-
-<pre>
-<?php
-  // print_r($enigma);
-?>
-</pre>
+echo 'before: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1)."\n";
+echo $l.'->'.$enigma->encodeLetter($l)."\n";
+echo 'after: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1)."\n";
