@@ -15,7 +15,7 @@ namespace Rafalmasiarek\Enigma;
  */
 /**const
  * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
- * @version 1.0
+ * @version 2.0
  * @package Enigma
  * @subpackage Core
  */

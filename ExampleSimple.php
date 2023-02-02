@@ -3,7 +3,7 @@
  * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
  * @author  Mustache Lab <kontakt@mustachelab.pl>
  * @copyright Copyright (c) 2015, Rafal Masiarek
- * @version 1.0
+ * @version 2.0
  * @package Enigma
  */
 /*

@@ -146,7 +146,7 @@ Rotors can have notches, which indicate the position where the next rotor is adv
 
 Each Rotor can be only used in one position at a time. Rotors I..VIII can be mounted at position 1, 2 or 3, wherelse rotors Beta and Gamma can only be used at position 4\. Aditionally, Beta and Gamma can only be used in combination with reflector B Thin or C Thin, the others only with reflector B or C.
 
-**!!!important!!!**   
+**!!!important!!!**
 These conditions only apply if a proper emulation of the original Enigma is desired. This implementation allows to setup the rotors in any order, so its up to the user to take care of the order of rotors.
 
 # usage:
@@ -218,7 +218,7 @@ composer require rafalmasiarek/enigma
  * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
  * @author Mustache Lab <http://mustachelab.pl>
  * @copyright Copyright (c) 2015, Rafal Masiarek
- * @version 1.0
+ * @version 2.0
  * @package Enigma
  */
 
