@@ -14,5 +14,11 @@
         "psr-4": {
             "Rafalmasiarek\\Enigma\\": "src/"
         }
+    },
+    "scripts": {
+        "test": "phpunit tests"
+    },
+    "scripts-descriptions": {
+        "test": "Run all tests!"
     }
 }

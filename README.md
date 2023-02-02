@@ -246,3 +246,9 @@ Enigma machines are now a collector's item for the über geek - a standard Army 
 
 Package by [Rafal Masiarek](http://rafal.masiarek.pl "Rafal Masiarek") from [Mustache Lab](http://mustachelab.pl "Mustache Lab")
 
+# Dev
+
+#### Run the tests
+```shell
+composer test
+```
