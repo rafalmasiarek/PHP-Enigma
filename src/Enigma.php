@@ -55,12 +55,10 @@ class Enigma
      * converts a character into its pendant in the Enigma alphabet
      * @param string character to convert
      * @return integer represention of a character in the Enigma alphabet
-     * @uses $ENIGMA_ALPHABET
      */
     public static function enigma_l2p(string $l): int
     {
-        global $ENIGMA_ALPHABET;
-        return array_search(strtoupper($l), $ENIGMA_ALPHABET, true);
+        return array_search(strtoupper($l), EnigmaAlphabet::$map, true);
     }
 
 
@@ -68,12 +66,10 @@ class Enigma
      * converts an element of the Enigma alphabet to 'our' alphabet
      * @param integer element to be converted
      * @return string resulting character
-     * @uses $ENIGMA_ALPHABET
      */
     public static function enigma_p2l(int $p): string
     {
-        global $ENIGMA_ALPHABET;
-        return $ENIGMA_ALPHABET[$p];
+        return EnigmaAlphabet::$map[$p];
     }
 
     /**
@@ -112,28 +108,21 @@ class Enigma
      * @param integer ID for the model to emulate
      * @param array integer IDs for the rotors for the initial setup
      * @param integer ID for the reflector for the initial setup
-     * @uses $ENIGMA_ROTORS
-     * @uses $ENIGMA_REFLECTORS
-     * @uses EnigmaPlugboard
-     * @uses EnigmaRotor
-     * @uses EnigmaReflector
      */
     public function __construct(EnigmaModel $model, array $rotors, ReflectorType $reflector)
     {
-        global $ENIGMA_ROTORS, $ENIGMA_REFLECTORS;
-
         $this->rotors = [];
         $this->availablerotors = [];
         $this->availablereflectors = [];
 
         $this->plugboard = new EnigmaPlugboard;
 
-        foreach ($ENIGMA_ROTORS as $r) {
+        foreach (EnigmaRotor::$setup as $r) {
             if (\in_array($model, $r['used'], true)) {
                 $this->availablerotors[$r['key']->name] = new EnigmaRotor($r['wiring'], $r['notches']);
             }
         }
-        foreach ($ENIGMA_REFLECTORS as $r) {
+        foreach (EnigmaReflector::$setup as $r) {
             if (\in_array($model, $r['used'], true)) {
                 $this->availablereflectors[$r['key']->name] = new EnigmaReflector($r['wiring']);
             }
@@ -169,8 +158,6 @@ class Enigma
      * @see advance
      * @param string letter to encode
      * @return string encoded letter
-     * @uses enigma_l2p
-     * @uses enigma_p2l
      */
     public function encodeLetter(string $letter): string
     {
@@ -237,7 +224,6 @@ class Enigma
      * Get the current position of a rotor.
      * @param integer ID of the rotor
      * @return string current position
-     * @uses enigma_p2l
      */
     public function getPosition(int|RotorPosition $position): string
     {
@@ -266,7 +252,6 @@ class Enigma
      * @param string letter 1 to connect
      * @param string letter 2 to connect
      * @return void
-     * @uses enigma_l2p
      */
     public function plugLetters(string $letter1, string $letter2): void
     {

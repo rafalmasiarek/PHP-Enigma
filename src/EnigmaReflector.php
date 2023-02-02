@@ -19,6 +19,22 @@ namespace Rafalmasiarek\Enigma;
  */
 class EnigmaReflector
 {
+
+    /**
+     * stores the setup for all available reflectors
+     * fields are
+     * key: ID of the reflector
+     * wiring: the setup for the wiring of a reflector
+     * used: IDs of models, this rotos can be used in
+     * @global array $ENIGMA_REFLECTORS
+     */
+    public static array $setup = [
+        ['key'=>ReflectorType::B,     'wiring'=>'YRUHQSLDPXNGOKMIEBFZCWVJAT', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3]],
+        ['key'=>ReflectorType::C,     'wiring'=>'FVPJIAOYEDRZXWGCTKUQSBNMHL', 'used'=>[EnigmaModel::WMLW, EnigmaModel::KMM3]],
+        ['key'=>ReflectorType::BTHIN, 'wiring'=>'ENKQAUYWJICOPBLMDXZVFTHRGS', 'used'=>[EnigmaModel::KMM4]],
+        ['key'=>ReflectorType::CTHIN, 'wiring'=>'RDOBJNTKVEHMLFCWZAXGYIPSUQ', 'used'=>[EnigmaModel::KMM4]],
+    ];
+
     /**
      * The wiring of the reflector.
      * Pins are connected in pairs, that means, if 'D' on side A connects to 'H'

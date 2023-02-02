@@ -38,7 +38,6 @@ class EnigmaWiring
      *
      * example string EKMFLGDQVZNTOWYHXUSPAIBRCJ leads to [0]=4, [1]=10, [2]=12, ...
      * @param string setup for the internal wiring
-     * @uses enigma_l2p
      */
     public function __construct(string $wiring)
     {
