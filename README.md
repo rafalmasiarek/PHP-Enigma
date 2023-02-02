@@ -202,7 +202,15 @@ disconnect two letters on the plugboard the current position of a rotor can be o
 
     string $enigma->getPosition (integer $position)
 
-# example:
+
+# Installation
+Require [Composer PHP](https://getcomposer.org/).
+
+```shell
+composer require rafalmasiarek/enigma
+```
+
+# Example
 
 ```php
 <?php
