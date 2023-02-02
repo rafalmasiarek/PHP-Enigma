@@ -25,14 +25,14 @@ class EnigmaReflector
      * on side B, 'H' on side A connects to 'D' on side B. No letter must connect to itself!
      * @var EnigmaWiring
      */
-    private $wiring;
+    private EnigmaWiring $wiring;
 
     /**
      * Constructor creates a new Wiring with the setup from $wiring.
      * @uses EnigmaWiring
      * @param string $wiring setup for the wiring
      */
-    public function __construct($wiring)
+    public function __construct(string $wiring)
     {
         $this->wiring = new EnigmaWiring($wiring);
     }
@@ -44,7 +44,7 @@ class EnigmaReflector
      * @param integer letter to process
      * @return integer resulting letter
      */
-    public function processLetter($letter)
+    public function processLetter(int $letter): int
     {
         return $this->wiring->processLetter1stPass($letter);
     }

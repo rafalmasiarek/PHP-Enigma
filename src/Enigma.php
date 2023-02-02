@@ -57,7 +57,7 @@ class Enigma
      * @return integer represention of a character in the Enigma alphabet
      * @uses $ENIGMA_ALPHABET
      */
-    public static function enigma_l2p($l)
+    public static function enigma_l2p(string $l): int
     {
         global $ENIGMA_ALPHABET;
         return array_search(strtoupper($l), $ENIGMA_ALPHABET, true);
@@ -70,7 +70,7 @@ class Enigma
      * @return string resulting character
      * @uses $ENIGMA_ALPHABET
      */
-    public static function enigma_p2l($p)
+    public static function enigma_p2l(int $p): string
     {
         global $ENIGMA_ALPHABET;
         return $ENIGMA_ALPHABET[$p];
@@ -80,25 +80,25 @@ class Enigma
      * The plugboard that connects input and output to the 1st rotor.
      * @var EnigmaPlugboard
      */
-    private $plugboard;
+    private EnigmaPlugboard $plugboard;
 
     /**
      * The rotors used by the Enigma.
      * @var array EnigmaRotor
      */
-    private $rotors;
+    private array $rotors;
 
     /**
      * The reflector used by the Enigma.
      * @var array EnigmaReflector
      */
-    private $reflector;
+    private EnigmaReflector $reflector;
 
     /**
      * The rotors available for this model of the Enigma.
      * @var array EnigmaRotor
      */
-    private $availablerotors;
+    private array $availablerotors;
 
     /**
      * The reflectors available for this model of the Enigma.
@@ -172,7 +172,7 @@ class Enigma
      * @uses enigma_l2p
      * @uses enigma_p2l
      */
-    public function encodeLetter($letter)
+    public function encodeLetter(string $letter): string
     {
         $this->advance();
         $letter = self::enigma_l2p($letter);
@@ -213,7 +213,7 @@ class Enigma
     /**
      * Mount a reflector into the enigma.
      * The previously used reflector will be replaced.
-     * @param integer ID of the reflector to use
+     * @param ReflectorType ID of the reflector to use
      * @return void
      */
     public function mountReflector(ReflectorType $reflector): void
@@ -228,7 +228,7 @@ class Enigma
      * @return void
      * @uses enigma_l2p
      */
-    public function setPosition(RotorPosition $position, $letter): void
+    public function setPosition(RotorPosition $position, string $letter): void
     {
         $this->rotors[$position->value]->setPosition(self::enigma_l2p($letter));
     }
@@ -239,7 +239,7 @@ class Enigma
      * @return string current position
      * @uses enigma_p2l
      */
-    public function getPosition(int|RotorPosition $position)
+    public function getPosition(int|RotorPosition $position): string
     {
         $position = RotorPosition::getPositionIntValue($position);
 
@@ -253,7 +253,7 @@ class Enigma
      * @return void
      * @uses enigma_l2p
      */
-    public function setRingstellung(int|RotorPosition $position, $letter): void
+    public function setRingstellung(int|RotorPosition $position, string $letter): void
     {
         $position = RotorPosition::getPositionIntValue($position);
 
@@ -268,7 +268,7 @@ class Enigma
      * @return void
      * @uses enigma_l2p
      */
-    public function plugLetters($letter1, $letter2): void
+    public function plugLetters(string $letter1, string $letter2): void
     {
         $this->plugboard->plugLetters(self::enigma_l2p($letter1), self::enigma_l2p($letter2));
     }
@@ -280,7 +280,7 @@ class Enigma
      * @return void
      * @uses enigma_l2p
      */
-    public function unplugLetters($letter): void
+    public function unplugLetters(string $letter): void
     {
         $this->plugboard->unplugLetters(self::enigma_l2p($letter));
     }

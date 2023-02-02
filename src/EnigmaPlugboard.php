@@ -39,9 +39,8 @@ class EnigmaPlugboard
      *
      * Pins always have to be connected in pairs, that means, if 'D' on side A
      * connects to 'H' on side B, 'H' on side A has to connect to 'D' on side B
-     * @var EnigmaWiring
      */
-    private $wiring;
+    private EnigmaWiring $wiring;
 
     /**
      * Constructor creates a new Wiring and connects the pins in pairs.
@@ -65,7 +64,7 @@ class EnigmaPlugboard
      * @param integer letter to process
      * @return integer resulting letter
      */
-    public function processLetter($letter)
+    public function processLetter(int $letter): int
     {
         return $this->wiring->processLetter1stPass($letter);
     }
@@ -76,7 +75,7 @@ class EnigmaPlugboard
      * @param integer letter 2 to connect
      * @return void
      */
-    public function plugLetters($letter1, $letter2): void
+    public function plugLetters(int $letter1, int $letter2): void
     {
         $this->wiring->connect($letter1, $letter2);
         $this->wiring->connect($letter2, $letter1);
@@ -88,7 +87,7 @@ class EnigmaPlugboard
      * @param integer 1 of the 2 letters to disconnect
      * @return void
      */
-    public function unplugLetters($letter): void
+    public function unplugLetters(int $letter): void
     {
         $temp = $this->wiring->connectsTo($letter);
         $this->wiring->connect($letter, $letter);

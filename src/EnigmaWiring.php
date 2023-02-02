@@ -31,7 +31,7 @@ class EnigmaWiring
     * Size is ENIGMA_ALPHABET_SIZE.
     * @var array integer
     */
-    private $wiring;
+    private array $wiring;
 
     /**
      * Constructor connects the pins according to the list in $wiring.
@@ -40,7 +40,7 @@ class EnigmaWiring
      * @param string setup for the internal wiring
      * @uses enigma_l2p
      */
-    public function __construct($wiring)
+    public function __construct(string $wiring)
     {
         $this->wiring = array_map(Enigma::enigma_l2p(...), str_split($wiring));
     }
@@ -51,7 +51,7 @@ class EnigmaWiring
      * @param integer pin 2 to connect
      * @return void
      */
-    public function connect($pin1, $pin2): void
+    public function connect(int $pin1, int $pin2): void
     {
         $this->wiring[$pin1] = $pin2;
     }
@@ -61,7 +61,7 @@ class EnigmaWiring
      * @param integer start of the connection
      * @return integer the connected pin
      */
-    public function connectsTo($pin)
+    public function connectsTo(int $pin): int
     {
         return $this->wiring[$pin];
     }
@@ -71,7 +71,7 @@ class EnigmaWiring
      * @param integer pin that got activated
      * @return integer pin that gets activated
      */
-    public function processLetter1stPass($pin)
+    public function processLetter1stPass(int $pin): int
     {
         return $this->wiring[$pin];
     }
@@ -81,7 +81,7 @@ class EnigmaWiring
      * @param integer pin that got activated
      * @return integer pin that gets activated
      */
-    public function processLetter2ndPass($pin)
+    public function processLetter2ndPass(int $pin): int
     {
         return array_search($pin, $this->wiring, true);
     }

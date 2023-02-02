@@ -35,31 +35,31 @@ class EnigmaRotor
      * The wiring of a rotor.
      * @var EnigmaWiring
      */
-    private $wiring;
+    private EnigmaWiring $wiring;
 
     /**
      * The positions of the notches of a rotor.
      * @var array integer positions of the notches
      */
-    private $notches;
+    private array $notches;
 
     /**
      * Actual position of the rotor.
      * @var integer actual rotorpositions
      */
-    private $position = 0;
+    private int $position = 0;
 
     /**
      * Offset of the wiring.
      * @var integer actual positions rotor
      */
-    private $ringstellung = 0;
+    private int $ringstellung = 0;
 
     /**
      * A rotor is in use or available
      * @var boolean
      */
-    public $inUse = false;
+    public bool $inUse = false;
 
     /**
      * Constructor creates a new Wiring with the setup from $wiring and stores positions of the notches.
@@ -67,7 +67,7 @@ class EnigmaRotor
      * @param string setup for the wiring
      * @param array positions of the notches
      */
-    public function __construct($wiring, $notches)
+    public function __construct(string $wiring, array $notches)
     {
         $this->wiring = new EnigmaWiring($wiring);
         $this->notches = $notches;
@@ -89,7 +89,7 @@ class EnigmaRotor
      * Returns true if the rotor is in a turnover position for the next rotor
      * @return boolean turnover position reached
      */
-    public function isNotchOpen()
+    public function isNotchOpen(): bool
     {
         return \in_array($this->position, $this->notches, true);
     }
@@ -102,7 +102,7 @@ class EnigmaRotor
      * @param integer letter to process
      * @return integer resulting letter
      */
-    public function processLetter1stPass($letter)
+    public function processLetter1stPass(int $letter): int
     {
         $letter = ($letter - $this->ringstellung + $this->position + ENIGMA_ALPHABET_SIZE) % ENIGMA_ALPHABET_SIZE;
         $letter = $this->wiring->processLetter1stPass($letter);
@@ -117,7 +117,7 @@ class EnigmaRotor
      * @param integer letter to process
      * @return integer resulting letter
      */
-    public function processLetter2ndPass($letter)
+    public function processLetter2ndPass(int $letter): int
     {
         $letter = ($letter - $this->ringstellung + $this->position + ENIGMA_ALPHABET_SIZE) % ENIGMA_ALPHABET_SIZE;
         $letter = $this->wiring->processLetter2ndPass($letter);
@@ -129,7 +129,7 @@ class EnigmaRotor
      * @param integer position to go to
      * @return void
      */
-    public function setPosition($letter): void
+    public function setPosition(int $letter): void
     {
         $this->position = $letter;
     }
@@ -138,7 +138,7 @@ class EnigmaRotor
      * Retrieve current position of the rotor.
      * @return integer current position
      */
-    public function getPosition()
+    public function getPosition(): int
     {
         return $this->position;
     }
@@ -148,7 +148,7 @@ class EnigmaRotor
      * @param integer position to go to
      * @return void
      */
-    public function setRingstellung($letter): void
+    public function setRingstellung(int $letter): void
     {
         $this->ringstellung = $letter;
     }
