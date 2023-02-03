@@ -9,7 +9,6 @@ final class EnigmaAlphabet
     /**
      * encoding table
      * eg.: Enigma::KEY_A=>"A", Enigma::KEY_B=>"B", ...
-     * @global array $ENIGMA_ALPHABET
      */
     public static array $map = [
         Enigma::KEY_A=>'A',

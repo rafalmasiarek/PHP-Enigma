@@ -171,41 +171,49 @@ defines the model to emulate
 *   `$reflector` - ID to identify the reflector for the initial setup
 
 to en- or decode a letter, use
+```php 
+$enigma->encodeLetter (string $letter): string
+```
 
-    string $enigma->encodeLetter (string $letter)
-
-to change the setup of the Enigma, these functions can be used:
-
-    void $enigma->mountRotor (integer $position, integer $rotor);
+### To change the setup of the Enigma, these functions can be used:
 
 replace a rotor by another
-
-    void $enigma->mountReflector (integer $reflector);
+```php
+$enigma->mountRotor (int|RotorPosition $position, integer $rotor): void
+```
 
 replace a reflector by another
-
-    void $enigma->setPosition (integer $position, string $letter);
+```php
+$enigma->mountReflector (int $reflector): void
+```
 
 turn a rotor to a new position
-
-    void $enigma->setRingstellung (integer $position, string $letter)
+```php
+$enigma->setPosition (int RotorPosition, string $letter): void
+```
 
 turn the ringstellungon a rotor to a new position
-
-    void $enigma->plugLetters (string $letter1, string $letter2)
+```php
+$enigma->setRingstellung (int|RotorPosition $position, string $letter): void
+```
 
 connect two letters on the plugboard
+```php
+$enigma->plugLetters (string $letter1, string $letter2): void
+```
 
-    void $enigma->unplugLetters (string $letter)
+disconnect two letters on the plugboard 
+```php
+$enigma->unplugLetters (string $letter): void
+```
 
-disconnect two letters on the plugboard the current position of a rotor can be obtained by
-
-    string $enigma->getPosition (integer $position)
-
+the current position of a rotor can be obtained by
+```php
+$enigma->getPosition (int $position): string
+```
 
 # Installation
 Require [Composer PHP](https://getcomposer.org/).
-
 ```shell
 composer require rafalmasiarek/enigma
 ```
@@ -244,11 +252,14 @@ echo 'after: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(
 
 Enigma machines are now a collector's item for the über geek - a standard Army Enigma has increased in value from $20K to over $100K in the past decade. A record price of over $208,000 was achieved in a Christie's auction on 9/29/2011.
 
-Package by [Rafal Masiarek](http://rafal.masiarek.pl "Rafal Masiarek") from [Mustache Lab](http://mustachelab.pl "Mustache Lab")
-
 # Dev
 
 #### Run the tests
 ```shell
 composer test
 ```
+
+# Credits
+
+Written and designed by [Rafal Masiarek](http://rafal.masiarek.pl "Rafal Masiarek") from [Mustache Lab](http://mustachelab.pl "Mustache Lab")  
+Refactored to a library and modernized by [Julien Boudry](https://github.com/julien-boudry)

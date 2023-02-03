@@ -86,7 +86,6 @@ class Enigma
 
     /**
      * The reflector used by the Enigma.
-     * @var array EnigmaReflector
      */
     private EnigmaReflector $reflector;
 
