@@ -146,7 +146,7 @@ Rotors can have notches, which indicate the position where the next rotor is adv
 
 Each Rotor can be only used in one position at a time. Rotors I..VIII can be mounted at position 1, 2 or 3, wherelse rotors Beta and Gamma can only be used at position 4\. Aditionally, Beta and Gamma can only be used in combination with reflector B Thin or C Thin, the others only with reflector B or C.
 
-**!!!important!!!**   
+**!!!important!!!**
 These conditions only apply if a proper emulation of the original Enigma is desired. This implementation allows to setup the rotors in any order, so its up to the user to take care of the order of rotors.
 
 # usage:
@@ -171,68 +171,95 @@ defines the model to emulate
 *   `$reflector` - ID to identify the reflector for the initial setup
 
 to en- or decode a letter, use
+```php 
+$enigma->encodeLetter (string $letter): string
+```
 
-    string $enigma->encodeLetter (string $letter)
-
-to change the setup of the Enigma, these functions can be used:
-
-    void $enigma->mountRotor (integer $position, integer $rotor);
+### To change the setup of the Enigma, these functions can be used:
 
 replace a rotor by another
-
-    void $enigma->mountReflector (integer $reflector);
+```php
+$enigma->mountRotor (int|RotorPosition $position, integer $rotor): void
+```
 
 replace a reflector by another
-
-    void $enigma->setPosition (integer $position, string $letter);
+```php
+$enigma->mountReflector (int $reflector): void
+```
 
 turn a rotor to a new position
-
-    void $enigma->setRingstellung (integer $position, string $letter)
+```php
+$enigma->setPosition (int RotorPosition, string $letter): void
+```
 
 turn the ringstellungon a rotor to a new position
-
-    void $enigma->plugLetters (string $letter1, string $letter2)
+```php
+$enigma->setRingstellung (int|RotorPosition $position, string $letter): void
+```
 
 connect two letters on the plugboard
+```php
+$enigma->plugLetters (string $letter1, string $letter2): void
+```
 
-    void $enigma->unplugLetters (string $letter)
+disconnect two letters on the plugboard 
+```php
+$enigma->unplugLetters (string $letter): void
+```
 
-disconnect two letters on the plugboard the current position of a rotor can be obtained by
+the current position of a rotor can be obtained by
+```php
+$enigma->getPosition (int $position): string
+```
 
-    string $enigma->getPosition (integer $position)
+# Installation
+Require [Composer PHP](https://getcomposer.org/).
+```shell
+composer require rafalmasiarek/enigma
+```
 
-# example:
+# Example
 
-    <?php
-    /**
-     * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
-     * @author Mustache Lab <http://mustachelab.pl>
-     * @copyright Copyright (c) 2015, Rafal Masiarek
-     * @version 1.0
-     * @package Enigma
-     */
+```php
+<?php
+/**
+ * @author Rafal Masiarek <rafalmasiarek@hotmail.com>
+ * @author Mustache Lab <http://mustachelab.pl>
+ * @copyright Copyright (c) 2015, Rafal Masiarek
+ * @version 2.0
+ * @package Enigma
+ */
 
-    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "Enigma.php";
-    $rotors = array(ENIGMA_ROTOR_I, ENIGMA_ROTOR_II, ENIGMA_ROTOR_III);
-    $enigma = new Enigma(ENIGMA_WM, $rotors, ENIGMA_REFLECTOR_B);
-    $enigma->setPosition(ENIGMA_ROTOR_1, "M");
-    $enigma->setRingstellung(ENIGMA_ROTOR_1, "B");
-    $enigma->plugLetters("A", "C");
-    $enigma->plugLetters("B", "Z");
-    $enigma->unplugLetters("A");
-    $l = "A";
-    echo "before: ".$enigma->getPosition(ENIGMA_ROTOR_3)." ".$enigma->getPosition(ENIGMA_ROTOR_2)." ".$enigma->getPositionENIGMA_ROTOR_1)."<br>";
-    echo $l."->".$enigma->encodeLetter($l)."<br>";
-    echo "after: ".$enigma->getPosition(ENIGMA_ROTOR_3)." ".$enigma->getPosition(ENIGMA_ROTOR_2)." ".$enigma->getPosition(ENIGMA_ROTOR_1)."<br>";
+use Rafalmasiarek\Enigma\{Enigma, EnigmaModel, ReflectorType, RotorPosition, RotorType};
 
-    ?>
+require_once 'vendor/autoload.php';
 
-    <pre>
-    <?php print_r($enigma); ?>
-    </pre>
+$rotors = [RotorType::I, RotorType::II, RotorType::III];
+$enigma = new Enigma(EnigmaModel::WMLW, $rotors, ReflectorType::B);
+$enigma->setPosition(RotorPosition::P1, 'M');
+$enigma->setRingstellung(RotorPosition::P1, 'B');
+
+$enigma->plugLetters('A', 'C');
+$enigma->plugLetters('B', 'Z');
+
+$enigma->unplugLetters('A');
+
+$l = 'A';
+echo 'before: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1)."\n";
+echo $l.'->'.$enigma->encodeLetter($l)."\n";
+echo 'after: '.$enigma->getPosition(RotorPosition::P3).' '.$enigma->getPosition(RotorPosition::P2).' '.$enigma->getPosition(RotorPosition::P1)."\n";
+```
 
 Enigma machines are now a collector's item for the über geek - a standard Army Enigma has increased in value from $20K to over $100K in the past decade. A record price of over $208,000 was achieved in a Christie's auction on 9/29/2011.
 
-Package by [Rafal Masiarek](http://rafal.masiarek.pl "Rafal Masiarek") from [Mustache Lab](http://mustachelab.pl "Mustache Lab")
+# Dev
 
+#### Run the tests
+```shell
+composer test
+```
+
+# Credits
+
+Written and designed by [Rafal Masiarek](http://rafal.masiarek.pl "Rafal Masiarek") from [Mustache Lab](http://mustachelab.pl "Mustache Lab")  
+Refactored to a library and modernized by [Julien Boudry](https://github.com/julien-boudry)

@@ -1,0 +1,24 @@
+{
+    "name": "rafalmasiarek/enigma",
+    "description": "Enigma cipher machine was invented by a German engineer. This PHP package simulates its operation.",
+    "type": "library",
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.4",
+        "phpunit/phpunit": "^9.5",
+        "league/commonmark": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rafalmasiarek\\Enigma\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit tests"
+    },
+    "scripts-descriptions": {
+        "test": "Run all tests!"
+    }
+}
